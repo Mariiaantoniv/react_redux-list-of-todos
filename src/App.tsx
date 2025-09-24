@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 import { Todo } from './types/Todo';
 import { getTodos, getUser } from './api';
 import { User } from './types/User';
-import { useAppSelector } from './app/hooks';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+
 import { setTodos } from './features/todos';
 import { setQuery, setStatus } from './features/filter';
-// import { todo } from 'node:test';
+import { Status } from './types/Status';
 
 export const App: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const todos = useAppSelector(state => state.todos);
   const { query, status } = useAppSelector(state => state.filter);
@@ -52,7 +52,7 @@ export const App: React.FC = () => {
     dispatch(setQuery(value));
   };
 
-  const handleStatusChange = (newStatus: typeof status) => {
+  const handleStatusChange = (newStatus: Status) => {
     dispatch(setStatus(newStatus));
   };
 

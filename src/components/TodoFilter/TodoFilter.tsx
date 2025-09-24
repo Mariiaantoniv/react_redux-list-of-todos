@@ -1,8 +1,9 @@
 import React from 'react';
+import { Status } from '../../types/Status';
 
 type Props = {
   query: string;
-  status: 'all' | 'active' | 'completed';
+  status: Status;
   onQueryChange: (text: string) => void;
   onQueryClear: () => void;
   onStatusChange: (status: 'all' | 'active' | 'completed') => void;
@@ -25,9 +26,7 @@ export const TodoFilter: React.FC<Props> = ({
           <select
             data-cy="statusSelect"
             value={status}
-            onChange={e =>
-              onStatusChange(e.target.value as 'all' | 'active' | 'completed')
-            }
+            onChange={e => onStatusChange(e.target.value as Status)}
           >
             <option value="all">All</option>
             <option value="active">Active</option>

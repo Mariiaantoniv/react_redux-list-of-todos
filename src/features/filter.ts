@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Status } from '../types/Status';
 
 interface FilterState {
   query: string;
-  status: 'all' | 'active' | 'completed';
+  status: Status;
 }
 
 const initialState: FilterState = {
@@ -17,7 +18,7 @@ export const filterSlice = createSlice({
     setQuery(state, action: PayloadAction<string>) {
       return { ...state, query: action.payload };
     },
-    setStatus(state, action: PayloadAction<'all' | 'active' | 'completed'>) {
+    setStatus(state, action: PayloadAction<Status>) {
       return { ...state, status: action.payload };
     },
   },

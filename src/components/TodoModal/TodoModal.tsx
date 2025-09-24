@@ -58,9 +58,11 @@ export const TodoModal: React.FC<Props> = ({
 
               {' by '}
 
-              <a href={user !== null && `mailto:${user.email}`}>
-                {user !== null && user.name}
-              </a>
+              {user ? (
+                <a href={`mailto:${user.email}`}>{user.name}</a>
+              ) : (
+                <span>Unknown user</span>
+              )}
             </p>
           </div>
         </div>
