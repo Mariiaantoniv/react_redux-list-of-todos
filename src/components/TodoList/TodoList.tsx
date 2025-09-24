@@ -13,6 +13,13 @@ export const TodoList: React.FC<Props> = ({
   onSelect,
   selectTodoId,
 }) => {
+  if (todos.length === 0) {
+    return (
+      <div className="notification">
+        There are no todos matching current filter criteria.
+      </div>
+    );
+  }
   return (
     <table className="table is-narrow is-fullwidth">
       <thead>
